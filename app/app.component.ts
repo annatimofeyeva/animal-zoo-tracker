@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
     <h1>List of Zoo's Animals. Last update: {{month}}/{{day}}/{{year}}</h1>
 <br>
 <ul>
-  <li *ngFor="let currentAnimal of animals">{{currentAnimal.species}}, {{currentAnimal.name}} <button (click)="editAnimal()">Edit!</button></li>
+  <li [class]="priorityColor(currentAnimal)" (click)="isDone(currentAnimal)" *ngFor="let currentAnimal of animals">{{currentAnimal.species}}, {{currentAnimal.name}} <button (click)="editAnimal()">Edit!</button></li>
 </ul>
   </div>
   `
@@ -30,6 +30,13 @@ export class AppComponent {
       alert("You just requested to edit a Task!");
     }
 
+    priorityColor(currentAnimal){
+    if (currentAnimal.location === 'Northern Trail'){
+      return "bg-warning";
+    } else {
+      return "bg-info";
+    }
+  }
 }
 
 export class Animal {
