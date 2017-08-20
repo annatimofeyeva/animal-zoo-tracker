@@ -5,12 +5,15 @@ import { Component } from '@angular/core';
   template: `
   <div class="container">
   <br>
-    <h1>List of Zoo's Animals. Last update: {{month}}/{{day}}/{{year}}</h1>
+    <h1>List of Zoo's Animals:</h1><br>
+    <h2>Last update: {{month}}/{{day}}/{{year}}</h2>
+<br>
 <br>
 <ul>
-  <li [class]="priorityColor(currentAnimal)" (click)="isDone(currentAnimal)" *ngFor="let currentAnimal of animals">{{currentAnimal.species}}, {{currentAnimal.name}},{{currentAnimal.age}}, {{currentAnimal.location}}, {{currentAnimal.caretakers}} <button  (click)="editAnimal(currentAnimal)">Edit!</button></li>
+  <li [class]="priorityColor(currentAnimal)" (click)="isDone(currentAnimal)" *ngFor="let currentAnimal of animals">{{currentAnimal.species}},   {{currentAnimal.name}},   {{currentAnimal.age}},   {{currentAnimal.location}},   {{currentAnimal.caretakers}} <button  (click)="editAnimal(currentAnimal)">Edit!</button></li>
 </ul>
 <hr>
+<div *ngIf="selectedAnimal">
         <div>
           <h3>{{selectedAnimal.species}}</h3>
           <p>Animal Complete? {{selectedAnimal.done}}</p>
@@ -22,7 +25,7 @@ import { Component } from '@angular/core';
           <input [(ngModel)]="selectedAnimal.name">
           <br>
           <label>Enter Animal Age:</label>
-          <input [(ngModel)]="selectedAnimal.age">
+          <input type="number" name="age" [(ngModel)]="selectedAnimal.age">
           <br>
           <label>Enter Animal Location:</label>
           <input [(ngModel)]="selectedAnimal.location">
@@ -30,11 +33,9 @@ import { Component } from '@angular/core';
           <label>Enter Animal Caretakers:</label>
           <input [(ngModel)]="selectedAnimal.caretakers">
           <br>
-          <label>Change Animal Location:</label>
-          <br>
-
-          <button (click)="finishedEditing()">Done</button>
         </div>
+          <button (click)="finishedEditing()">Done</button>
+    </div>
   </div>
   `
 })
@@ -50,7 +51,7 @@ export class AppComponent {
     new Animal("Ocelot", "Prince", 4, "Carnivore", "Tropical Rain Forest Building", 6, "Male", "Laying in the sunshine", "Toys that are not rope-based"),
     new Animal("Northwest Black Tailed Deer", "Tinkerbell", 8, "Herbivore", "Northern Trail", 2, "Female", "Delicate roots and leaves", "Loud Noises")
   ];
-   selectedAnimal: Animal = this.animals[0];
+   selectedAnimal = null;
 
    editAnimal(clickedAnimal) {
       this.selectedAnimal = clickedAnimal;
@@ -60,7 +61,7 @@ export class AppComponent {
         if(clickedAnimal.done === true) {
           alert("This animal is done!");
         } else {
-          alert("This animal is not done.");
+          alert("This animal is not updated.");
         }
       }
 
