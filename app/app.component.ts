@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
       <h3>Last Update:  {{month}}/{{day}}/{{year}}</h3>
       <h3>{{currentList}}</h3>
       <ul class="list-group">
-       <li class="list-group-item" (click)="isUpdate(currentAnimal)" *ngFor="let currentAnimal of animals">Species: {{currentAnimal.species}};  Name: {{currentAnimal.species}};  Age: {{currentAnimal.age}};   Caretakers:  {{currentAnimal.caretakers}} <button (click)="editAnimal()">Edit!</button></li>
+       <li class="list-group-item" (click)="isUpdate(currentAnimal)" *ngFor="let currentAnimal of animals">Species: {{currentAnimal.species}};  Name: {{currentAnimal.species}};  Age: {{currentAnimal.age}};   Caretakers:  {{currentAnimal.caretakers}} <button (click)="editAnimal(currentAnimal)">Edit!</button></li>
      </ul>
      <hr>
    <div *ngIf="selectedAnimal">
@@ -49,10 +49,10 @@ export class AppComponent {
   new Animal("Ocelot", "Prince", 4, "Carnivore", "Tropical Rain Forest Building", 6, "Male", "Laying in the sunshine", "Toys that are not rope-based"),
   new Animal("Northwest Black Tailed Deer", "Tinkerbell", 8, "Herbivore", "Northern Trail", 2, "Female", "Delicate roots and leaves", "Loud Noises")
 ];
-selectedAnimal: Animal = this.animals[1];
+selectedAnimal: Animal = this.animals[0];
 
-editAnimal() {
-    alert("You just requested to edit an Animal!");
+editAnimal(clickedAnimal) {
+    this.selectedAnimal = clickedAnimal;
   }
 
 isUpdate(clickedAnimal: Animal) {
