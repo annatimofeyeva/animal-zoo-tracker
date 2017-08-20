@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
     <h1>List of Zoo's Animals. Last update: {{month}}/{{day}}/{{year}}</h1>
 <br>
 <ul>
-  <li [class]="priorityColor(currentAnimal)" (click)="isDone(currentAnimal)" *ngFor="let currentAnimal of animals">{{currentAnimal.species}}, {{currentAnimal.name}} <button (click)="editAnimal(currentAnimal)">Edit!</button></li>
+  <li [class]="priorityColor(currentAnimal)" (click)="isDone(currentAnimal)" *ngFor="let currentAnimal of animals">{{currentAnimal.species}}, {{currentAnimal.name}},{{currentAnimal.age}}, {{currentAnimal.location}}, {{currentAnimal.caretakers}} <button  (click)="editAnimal(currentAnimal)">Edit!</button></li>
 </ul>
 <hr>
         <div>
@@ -17,10 +17,22 @@ import { Component } from '@angular/core';
           <h3>Edit Animal</h3>
           <label>Enter Animal Species:</label>
           <input [(ngModel)]="selectedAnimal.species">
+          <br>
+          <label>Enter Animal Name:</label>
+          <input [(ngModel)]="selectedAnimal.name">
+          <br>
+          <label>Enter Animal Age:</label>
+          <input [(ngModel)]="selectedAnimal.age">
+          <br>
+          <label>Enter Animal Location:</label>
+          <input [(ngModel)]="selectedAnimal.location">
+          <br>
+          <label>Enter Animal Caretakers:</label>
+          <input [(ngModel)]="selectedAnimal.caretakers">
+          <br>
           <label>Change Animal Location:</label>
           <br>
-          <input type="radio" [(ngModel)]="selectedAnimal.diet" [value]="Carnivore">Carnivore<br>
-          <input type="radio" [(ngModel)]="selectedAnimal.diet" [value]="Herbivore">Herbivore<br>
+
           <button (click)="finishedEditing()">Done</button>
         </div>
   </div>
