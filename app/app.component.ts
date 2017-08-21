@@ -32,7 +32,7 @@ import { Component } from '@angular/core';
              <input type="number" name="caretakers" [(ngModel)]="selectedAnimal.caretakers">
              <br>
            </div>
-             <button (click)="finishedEditing()">Done</button>
+           <button (click)="finishedEditing()">Done</button>
        </div>
   </div>
   `
@@ -49,7 +49,7 @@ export class AppComponent {
   new Animal("Ocelot", "Prince", 4, "Carnivore", "Tropical Rain Forest Building", 6, "Male", "Laying in the sunshine", "Toys that are not rope-based"),
   new Animal("Northwest Black Tailed Deer", "Tinkerbell", 8, "Herbivore", "Northern Trail", 2, "Female", "Delicate roots and leaves", "Loud Noises")
 ];
-selectedAnimal: Animal = this.animals[0];
+selectedAnimal = null;
 
 editAnimal(clickedAnimal) {
     this.selectedAnimal = clickedAnimal;
@@ -62,6 +62,10 @@ isUpdate(clickedAnimal: Animal) {
         alert("This animal is not updated");
       }
     }
+
+    finishedEditing() {
+        this.selectedAnimal = null;
+      }
 }
 
 export class Animal{
