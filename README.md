@@ -48,13 +48,6 @@ _Please contact Anna Timofeeva at anjatimofeyeva@gmail.com for any questions, fe
 
 ## Technologies Used
 
-_Technologies used include NPM, Angular, Bower, Node.js, Javascript, JQuery, Bootstrap, SCSS, SASS, HTML, and Git_
-
-
-Copyright (c) 2017 **_Anna Timofeeva_**
-
-## Technologies Used
-
 * Angular2
 * Typescript
 * Node.js
