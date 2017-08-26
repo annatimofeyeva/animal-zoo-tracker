@@ -30,9 +30,8 @@ You will need the following things properly installed on your computer.
 
 ## Code Specs
 
-|Behavior - Plain English|Input|Output|
+Behavior - Plain English|Input|Output|
 |---|---|---|
-
 |User sees a list of animals on the homepage.|User clicks the "Edit" button to change an animal's properties.|User sees an edit form appear at the bottom of the animal list with current values already populated.|
 |User is on the edit form.|User changes one or more of the properties on the form (like the sex or age for instance) and clicks button "Done".|Form goes away and the animal's properties have been updated.|
 |User sees homepage with a list of all animals in the zoo.|User selects to only see young or mature animals instead of all animals.|All animals list on homepage changes to just young or mature animals.|
