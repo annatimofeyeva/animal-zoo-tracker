@@ -4,25 +4,31 @@ import { Animal } from './animal.model';
 @Component({
   selector: 'animal-list',
   template: `
-  <ul class="list-group">
-   <li class="list-group-item" (click)="isUpdate(currentAnimal)" *ngFor="let currentAnimal of childAnimalList">Species: {{currentAnimal.species}};  Name: {{currentAnimal.species}};  Age: {{currentAnimal.age}};   Caretakers:  {{currentAnimal.caretakers}} <button (click)="editButtonHasBeenClicked(currentAnimal)">Edit!</button></li>
- </ul>
+      <ul class="list-group">
+     <h4><li class="list-group item" *ngFor="let currentAnimal of childAnimalList | maturity:filterByMaturity"><em>Species:</em> {{currentAnimal.species}};  <em>Name: </em>{{currentAnimal.species}};  <em>Age: </em>{{currentAnimal.age}};   <em>Caretakers: </em> {{currentAnimal.caretakers}}<button  class="pull-right"  (click)="editButtonHasBeenClicked(currentAnimal)">Edit!</button></li></h4>
+   </ul>
+  <select (change)="onChange($event.target.value)">
+      <option value="allAnimals">All Animals</option>
+      <option value="youngAnimals">Young Animals</option>
+      <option value="matureAnimals" selected="selected">Mature Animals</option>
+  </select>
   `
 })
 
 export class AnimalListComponent {
   @Input() childAnimalList: Animal[];
   @Output() clickSender = new EventEmitter();
+  isActive = true;
+
+
+
+filterByMaturity: string = "matureAnimals";
 
   editButtonHasBeenClicked(animalToEdit: Animal) {
-    this.clickSender.emit(animalToEdit);
-  }
+      this.clickSender.emit(animalToEdit);
+    }
 
-  isUpdate(clickedAnimal: Animal) {
-        if(clickedAnimal.update === true) {
-          alert("This animal is updated");
-        } else {
-          alert("This animal is not updated");
-        }
-      }
+    onChange(optionFromMenu) {
+    this.filterByMaturity = optionFromMenu;
+  }
 }

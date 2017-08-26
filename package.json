@@ -1,5 +1,5 @@
 {
-  "name": "animal-zoo-tracker",
+  "name": "angular2-to-do",
   "version": "1.0.0",
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
@@ -41,6 +41,6 @@
     "concurrently": "3.0.0",
     "lite-server": "2.2.2",
     "typescript": "2.2.2",
-    "typings": "1.3.2"
+    "typings":"1.3.2"
   }
 }
